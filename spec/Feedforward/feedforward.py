@@ -7,11 +7,7 @@ from collections import OrderedDict
 class FeedforwardLayer(nn.Module):
     def __init__(self, input_d, output_d, act, bias = True):
         super(FeedforwardLayer, self).__init__()
-        self.input_d = input_d
-        self.output_d = output_d
         self.act = act
-        self.bias = bias
-
         self.linear = nn.Linear(input_d, output_d, bias=bias)
 
     def forward(self, x):
@@ -23,10 +19,6 @@ class FeedforwardLayer(nn.Module):
 class Feedforward(nn.Module):
     def __init__(self, width, input_d, output_d, act, num_layers, bias = True):
         super(Feedforward, self).__init__()
-        self.width = width
-        self.input_d = input_d
-        self.act = act
-        self.num_layers = num_layers
         self.first_layer = FeedforwardLayer(input_d, width, act, bias=bias)
         self.internal_layers = nn.ModuleList([FeedforwardLayer(width, width, act, bias=bias) for _ in range(num_layers - 2)])
         self.output_layer = FeedforwardLayer(width, output_d, act=torch.nn.Identity(), bias=True)
