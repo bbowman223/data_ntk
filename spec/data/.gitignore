@@ -1,0 +1,9 @@
+# ignore all files in this directory
+*
+
+# except for .gitignore
+!.gitignore
+
+# and all .txt or .md files
+!*.txt
+!*.md
