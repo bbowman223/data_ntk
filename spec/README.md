@@ -13,10 +13,8 @@ Defines the network model
 Directory to store the MNIST and CIFAR10 data
 
 **utils/**
+
 This directory contains utility files 
-
-**ntk_utils.py** contains the code to compute the NTK
-
 
 **notebooks/**
 
