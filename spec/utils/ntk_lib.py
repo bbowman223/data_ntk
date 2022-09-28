@@ -1,5 +1,7 @@
 import torch
 from functorch import make_functional, vmap, vjp, jvp, jacrev
+
+
 def ntk(net, x1): 
     fnet, params = make_functional(net) 
     jac1 = vmap(jacrev(fnet), (None, 0))(params, x1)
