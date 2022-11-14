@@ -1,22 +1,16 @@
-This directory contains the files to compute the NTK spectrum for feedforward networks on MNIST and CIFAR10.
-If you want to create the Figure 2 plotting the NTK spectrum go to the directory **notebooks/**
-and open the jupyter notebook **Plot_NTK_Spectrum.ipynb**
 
-Below is an explanation of each directory
+This directory contains the files to compute the NTK spectrum.  Below is an explanation of each directory
 
-**Feedforward/**
+****Feedforward/****
+Implements a feedforward network using the NTK parameterization
 
-Defines the network model
+****data/****
+Directory to store the data
 
-**data/**
+  ****utils/****
+This directory contains utility files
 
-Directory to store the MNIST and CIFAR10 data
+  ****notebooks/****
+The file `NTK spectra for Caltech101 and Gaussian Data.ipynb` plots the NTK spectrum for [Caltech101](https://data.caltech.edu/records/mzrjq-6wc02) and isotropic Gaussian data for both feedforward networks and CNNs.  The definitions of the networks are inline in the file.
 
-**utils/**
-
-This directory contains utility files 
-
-**notebooks/**
-
-Contains the jupyter notebook to generate the figure to plot
-the NTK spectrum
+The file `plot_asymptotic_spectrum.ipynb` estimates the asymptotic decay of the spectrum for input data that is uniform on the sphere $\mathbb{S}^2$.  This file uses the feedforward model defined in the `./Feedforward` directory
