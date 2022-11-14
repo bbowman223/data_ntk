@@ -5,10 +5,18 @@ class FeedforwardLayer(nn.Module):
     def __init__(self, input_d, output_d, act, bias = True):
         super(FeedforwardLayer, self).__init__()
         self.act = act
+        self.input_d = input_d
         self.linear = nn.Linear(input_d, output_d, bias=bias)
+#         self.bias = torch.tensor(np.random.randn(output_d), requires_grad=True)
+        self.linear.weight.data.normal_(mean=0, std=1)
+        if bias:
+            self.linear.bias.data.normal_(mean=0, std=1)
 
+        
     def forward(self, x):
         x = self.linear(x)
+        x = x/self.input_d**0.5
+#         x = x/self.input_d**0.5+self.bias/self.input_d**0.5
         x = self.act(x)
         return x
 
